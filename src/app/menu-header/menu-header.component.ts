@@ -20,7 +20,6 @@ export class MenuHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
     //alert(JSON.stringify(this.myCookieService.getCookie('user')));
     this.user = this.myCookieService.getCookie('user');
     this.headericonAdd();

@@ -15,7 +15,7 @@ export class ApiService {
   }
 
     // POST Method
-    postData(apiSubUri,setPram){
+    apiPostData(apiSubUri,setPram){
         return this.http.post(this.apiURL+apiSubUri,setPram);
     }
     

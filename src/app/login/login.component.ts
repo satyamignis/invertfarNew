@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   apiLoading:any;
   registerForm:any;
   submitted:any;
+  rememberMe:any = false;
+  rememberMeCookie:any;
+  userRememberMe:any;
 
   constructor(
     private api:ApiService,
@@ -34,6 +37,14 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
+      this.userRememberMe = JSON.parse(this.myCookieService.getCookie('rememberMe'));
+      if(this.userRememberMe.rememberMe){
+        this.loginData.email= this.userRememberMe.username;
+        this.loginData.password=this.userRememberMe.password;
+        this.rememberMe=this.userRememberMe.rememberMe;
+      }
+
      //this.previousRoute = this.routingStateService.getPreviousUrl();
 	   window.scrollTo(0, 0);
      this.preloadimg=true;
@@ -69,12 +80,23 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
+
+       
+
         this.apiLoading=true;
-        this.api.postData('login',this.loginData)
+        this.api.apiPostData('login',this.loginData)
         .subscribe(
         (response : any) => {
           if(response.errorCode == '0' || response.errorCode == '3'){
            //console.log(response.data[0]);
+
+            /*%%%%%%%%%%%%%%%%%%% Remember Me %%%%%%%%%%%%%%%%%%*/
+            if(this.rememberMe){
+              this.rememberMeCookie = {'username':this.loginData.email, 'password':this.loginData.password,'rememberMe':this.rememberMe};
+              this.myCookieService.setCookie('rememberMe', this.rememberMeCookie);
+            }
+           /* ////////////////////////////////////////////////*/
+
            this.setCookieAndNavigate(response.data[0]);
             this.toastr.success(response.errorMsg);
           } else {

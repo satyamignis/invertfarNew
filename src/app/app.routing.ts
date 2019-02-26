@@ -34,6 +34,8 @@ import { PropertySearchComponent } from './property-search/property-search.compo
 import { AuthGaurdService } from './services/auth-gaurd.service';
 import { UnAuthGaurdService } from './services/unauth-gaurd.service';
 import { SubmitPropertyComponent } from './submit-property/submit-property.component';
+import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.component';
+
 
 
 export const AppRoutes: any = [
@@ -68,7 +70,8 @@ export const AppRoutes: any = [
     { path: "offer-type-rent", component: OfferTypeRentComponent },
     { path: "bank-detail", component: BankDetailComponent },
     { path: "property-search", component: PropertySearchComponent },
-    { path: "submit-property", component: SubmitPropertyComponent,canActivate : [AuthGaurdService]}
+    { path: "submit-property", component: SubmitPropertyComponent,canActivate : [AuthGaurdService]},
+    { path: "offer-type-sell", component: OfferTypeSellComponent}
 ];
 
 export const AppComponents: any = [
@@ -101,5 +104,6 @@ export const AppComponents: any = [
     FeaturedPropertiesComponent,
     OfferTypeRentComponent,
     BankDetailComponent,
-    SubmitPropertyComponent
+    SubmitPropertyComponent,
+    OfferTypeSellComponent
 ];

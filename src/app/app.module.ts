@@ -57,6 +57,7 @@ import { PropertySearchComponent } from './property-search/property-search.compo
 import { SubmitPropertyComponent } from './submit-property/submit-property.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { ToastrModule } from 'ngx-toastr';
+import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { ToastrModule } from 'ngx-toastr';
     BankDetailComponent,
     PropertySearchComponent,
     SubmitPropertyComponent,
-    MenuHeaderComponent
+    MenuHeaderComponent,
+    OfferTypeSellComponent
     
   ],
   imports: [

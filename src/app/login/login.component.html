@@ -106,7 +106,7 @@
          </div>
 
          <div class="form-group check-box">
-            <input type="checkbox" name="shipping-option" id="remember-me"> 
+            <input type="checkbox" name="RememberMe" [checked]="rememberMe" [(ngModel)]="rememberMe"  id="remember-me"> 
             <label for="remember-me">&nbsp;Remember me</label>
         </div>
 
@@ -249,22 +249,7 @@
             <input type="text" name="field-name" value="" placeholder="">
          </div>
      </div>
-
-
-
-
-
-
-         </div>
-
-  <!--        <div class="form-group check-box">
-            <input type="checkbox" name="" id="subscribe-newsletter">&ensp; 
-            <label for="subscribe-newsletter">We also operate in additional cities</label>
-        </div>
-        <div class="form-group check-box">
-            <input type="checkbox" name="" id="subscribe-newsletter">&ensp; 
-            <label for="subscribe-newsletter">I don's have any certificates:</label>
-        </div> -->
+     </div>
 
         <div class="form-group">
             <div class="upload-btn-wrapper">

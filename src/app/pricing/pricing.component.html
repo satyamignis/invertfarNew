@@ -1,6 +1,11 @@
-<div *ngIf="preloadimg" class="preloadingimg">
-    <img src="./assets/images/icons/preloader.gif">
-</div>
+<!-- *********** Loading ************** -->
+    <div *ngIf="preloadimg" class="preloadingimg">
+        <img src="./assets/images/icons/preloader.gif">
+    </div>
+    <div *ngIf="apiLoading" class="loadingApi">
+        <img src="./assets/images/icons/loading.gif">
+    </div>
+<!-- *********** Loading ************** -->
 <app-menu-header></app-menu-header>
 <section class="inner-banner">
 <div class="page-title" style="background-image:url(./assets/images/background/page-title-1.jpg);">
@@ -31,10 +36,10 @@
                     <div class="auto-container">
                         <div class="row">
                             <div class="fix-position-pricing-home2">
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-md-3 col-sm-6" *ngFor="let p of pricingList; let i = index">
                                     <div class="pricing-table">
                                     <div class="plan">
-                                        <h3>À la carte Services
+                                        <h3>{{p.title}}
                                             <span class="price">
                                                 <span class="price-inner">
                                                 <span class="price-home">
@@ -45,22 +50,16 @@
                                         </h3>
 
                                         <div class="body-table">
-                                            <h4>Per Service</h4>
+                                            <h4>{{p.price}}</h4>
                                             <ul>
-                                                <li>$8.99 Per Valuation Report</li>
-												<li>$45.99 Mobile Notarization </li>
-												<li>$24.99 20 additional photos</li>
-												<li>$24.99 1-Minute Property Video</li>
-												<li>$84.99 Residential Property Inspection (Exterior Only)</li>
-												<li>$99.99 Residential Property Inspection (Exterior & Interior)</li>
-												<li>$94.99 Documents pick-up & Delivery (Notary docs, notices etc)</li>
+                                                <li *ngFor="let d of p.desc">{{d}}</li>
                                             </ul>
                                             <a class="ot-btn">Get Access</a>
                                         </div>
                                     </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <!--<div class="col-md-3 col-sm-6">
                                     <div class="pricing-table pt-most-popular">
                                     <div class="plan">
                                         <h3>Novice
@@ -178,7 +177,7 @@
                                         </div>
                                     </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

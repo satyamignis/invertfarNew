@@ -20,9 +20,9 @@ export class ApiService {
     }
     
     // GET Method
-    /* getData(){
-        return this.http.get();
-    }*/
+    apiGetData(apiSubUri){
+        return this.http.get(this.apiURL+apiSubUri);
+    }
 
 }
 

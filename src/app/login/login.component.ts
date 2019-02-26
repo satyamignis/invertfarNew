@@ -80,9 +80,6 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-
-       
-
         this.apiLoading=true;
         this.api.apiPostData('login',this.loginData)
         .subscribe(

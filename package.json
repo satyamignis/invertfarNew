@@ -27,6 +27,7 @@
     "angular-6-social-login": "^1.1.1",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
+    "ng-multiselect-dropdown": "^0.2.3",
     "ng-simple-slideshow": "^1.2.8",
     "ngx-cookie-service": "^2.1.0",
     "ngx-owl-carousel-o": "^1.0.11",

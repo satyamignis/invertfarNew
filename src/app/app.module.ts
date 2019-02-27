@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 /* %%%%%%%%%%%%%% Service %%%%%%%%%%%%%%%%%%*/
@@ -111,6 +112,7 @@ import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.compon
     SlideshowModule,
     NgbModule,
     ToastrModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
     CarouselModule,
     FormsModule,
     ReactiveFormsModule,

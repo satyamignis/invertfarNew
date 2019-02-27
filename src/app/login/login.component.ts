@@ -98,7 +98,6 @@ export class LoginComponent implements OnInit {
             this.toastr.success(response.errorMsg);
           } else {
             this.toastr.error(response.errorMsg);
-            //this.myToasterService.alert(response.errorCode, 'Error', response.errorMsg);
           }
           this.apiLoading=false;
         },

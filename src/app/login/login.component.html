@@ -111,7 +111,7 @@
         </div>
 
         <div class="form-group">
-        <a href="#" class="forgot-password">Forgot password?</a>
+        <a [routerLink]="['/forgot-password']" class="forgot-password">Forgot password?</a>
         </div>
 
          <button (click)="doLogin()" type="button" class="btn-style-two width_full text-uppercase">Sign in</button>
@@ -188,7 +188,9 @@
          <div class="col-sm-12 col-md-6 no-margin">
          <div class="form-group">
             <div class="field-label">Primary Business Address</div>
-            <input type="text" name="field-name" value="" placeholder="">
+            <div class="form-group choose-location">
+                    <input class="form-control side_input location" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text">              
+            </div> 
          </div>
          </div>
 

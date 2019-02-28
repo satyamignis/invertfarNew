@@ -1,8 +1,12 @@
-<div *ngIf="preloadimg" class="preloadingimg">
-    <img src="./assets/images/icons/preloader.gif">
-</div>
+<!-- *********** Loading ************** -->
+    <div *ngIf="preloadimg" class="preloadingimg">
+        <img src="./assets/images/icons/preloader.gif">
+    </div>
+    <div *ngIf="apiLoading" class="loadingApi">
+        <img src="./assets/images/icons/loading.gif">
+    </div>
+<!-- *********** Loading ************** -->
 <app-menu-header></app-menu-header>
-
 <section class="inner-banner">
    <div class="page-title" style="background-image:url(./assets/images/background/page-title-1.jpg);">
       <!--Header-Lower-->
@@ -70,21 +74,15 @@
                      </div>
                   </div>
                </div>
-               <div class="row">
-               <div class="col-sm-12 col-md-12 no-margin">
-                  <div class="form-group">
-                     <div class="field-label">Select Sub Category</div>
-                     <div class="custom-select">
-                        <div class="select-selected">
-                           <select>
-                              <option  value="">Data Not Available</option>
-                           </select>
-                        </div>
-                     </div>
-                  </div>
+
+               <div class="form-group">
+                  <div class="field-label">Select Location</div>
+                  <div class="form-group choose-location">
+                    <input class="form-control side_input location" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text">              
+                  </div>               
                </div>
-            </div>
-                <div class="form-group">
+        
+               <div class="form-group">
                   <div class="field-label">Price for Service</div>
                   <input type="text" name="field-name" value="" placeholder="">
                </div>

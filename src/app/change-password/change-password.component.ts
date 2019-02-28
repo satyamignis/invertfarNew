@@ -10,10 +10,11 @@ export class ChangePasswordComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  this.preloadimg=true;
-        setTimeout(() => {  
-           this.preloadimg=false;
-        }, 1000);
-  }
+        window.scrollTo(0, 0);
+        this.preloadimg=true;
+              setTimeout(() => {  
+                 this.preloadimg=false;
+              }, 1000);
+        }
 
 }

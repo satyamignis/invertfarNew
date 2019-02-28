@@ -8,6 +8,10 @@ import { SlideshowModule } from 'ng-simple-slideshow';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+
 
 
 /* %%%%%%%%%%%%%% Service %%%%%%%%%%%%%%%%%%*/
@@ -59,6 +63,24 @@ import { SubmitPropertyComponent } from './submit-property/submit-property.compo
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { ToastrModule } from 'ngx-toastr';
 import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
+
+
+let config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('900032613539569')
+  },
+  {
+    id: LinkedInLoginProvider.PROVIDER_ID,
+    provider: new LinkedInLoginProvider('815pz8jv8lrbje', true, 'en_US')
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -100,7 +122,9 @@ import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.compon
     PropertySearchComponent,
     SubmitPropertyComponent,
     MenuHeaderComponent,
-    OfferTypeSellComponent
+    OfferTypeSellComponent,
+    ForgotPasswordComponent,
+    SetPasswordComponent
     
   ],
   imports: [
@@ -110,7 +134,9 @@ import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.compon
     RouterModule.forRoot(AppRoutes),
     HttpClientModule,
     SlideshowModule,
+    GooglePlaceModule,
     NgbModule,
+    SocialLoginModule,
     ToastrModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     CarouselModule,
@@ -124,7 +150,11 @@ import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.compon
     ApiService,
     CookieService,
     MyCookieService, 
-    AuthGaurdService
+    AuthGaurdService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

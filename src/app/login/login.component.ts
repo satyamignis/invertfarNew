@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { MyCookieService } from '../services/my-cookie-service';
 import { RoutingStateService } from '../services/routing-state.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+
 
 
 @Component({
@@ -13,6 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild("placesRef") placesRef: GooglePlaceDirective;
   previousRoute : any;
   fileName: string;
   filePreview: string;
@@ -38,21 +41,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-      this.userRememberMe = JSON.parse(this.myCookieService.getCookie('rememberMe'));
-      if(this.userRememberMe.rememberMe){
-        this.loginData.email= this.userRememberMe.username;
-        this.loginData.password=this.userRememberMe.password;
-        this.rememberMe=this.userRememberMe.rememberMe;
-      }
-
      //this.previousRoute = this.routingStateService.getPreviousUrl();
-	   window.scrollTo(0, 0);
+     window.scrollTo(0, 0);
      this.preloadimg=true;
      setTimeout(() => {  
          this.preloadimg=false;
      }, 1000);
      /*Register validation init*/
-     this.registerFormInt();
+
+    this.userRememberMe = JSON.parse(this.myCookieService.getCookie('rememberMe'));
+    if(this.userRememberMe.rememberMe){
+        this.loginData.email= this.userRememberMe.username;
+        this.loginData.password=this.userRememberMe.password;
+        this.rememberMe=this.userRememberMe.rememberMe;
+    }  
   }
 
   // convenience getter for easy access to form fields
@@ -90,7 +92,7 @@ export class LoginComponent implements OnInit {
             /*%%%%%%%%%%%%%%%%%%% Remember Me %%%%%%%%%%%%%%%%%%*/
             if(this.rememberMe){
               this.rememberMeCookie = {'username':this.loginData.email, 'password':this.loginData.password,'rememberMe':this.rememberMe};
-              this.myCookieService.setCookie('rememberMe', this.rememberMeCookie);
+              this.myCookieService.setForgotCookie('rememberMe', this.rememberMeCookie);
             }
            /* ////////////////////////////////////////////////*/
 
@@ -124,6 +126,14 @@ export class LoginComponent implements OnInit {
 
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
     }
+
+    handleAddressChange(address: any) {
+      // console.log('----------address', address);
+      // this.address.address = address.formatted_address;
+      // this.address.latitude = address.geometry.location.lat();
+      // this.address.longitude = address.geometry.location.lng();
+    }
+
 
   
 }

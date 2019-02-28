@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+
 declare const $: any;
 
 @Component({
@@ -7,6 +9,8 @@ declare const $: any;
   styleUrls: ['./companies-registration.component.css']
 })
 export class CompaniesRegistrationComponent implements OnInit {
+  @ViewChild("placesRef") placesRef: GooglePlaceDirective;
+
   preloadimg:any;
   constructor() { }
 
@@ -21,6 +25,13 @@ export class CompaniesRegistrationComponent implements OnInit {
         setTimeout(() => {  
            this.preloadimg=false;
         }, 1000);
+  }
+
+  handleAddressChange(address: any) {
+    // console.log('----------address', address);
+    // this.address.address = address.formatted_address;
+    // this.address.latitude = address.geometry.location.lat();
+    // this.address.longitude = address.geometry.location.lng();
   }
 
 }

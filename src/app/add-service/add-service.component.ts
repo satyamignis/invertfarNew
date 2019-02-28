@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+
 
 @Component({
   selector: 'app-add-service',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-service.component.css']
 })
 export class AddServiceComponent implements OnInit {
+  @ViewChild("placesRef") placesRef: GooglePlaceDirective;
+
   preloadimg:any;
-    dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  address:any;
+  apiLoading:any;
   constructor() { }
 
   ngOnInit() {
@@ -18,36 +21,16 @@ export class AddServiceComponent implements OnInit {
      setTimeout(() => {  
          this.preloadimg=false;
      }, 1000);
-
-
-
-     this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
+
+  handleAddressChange(address: any) {
+    // console.log('----------address', address);
+    // this.address.address = address.formatted_address;
+    // this.address.latitude = address.geometry.location.lat();
+    // this.address.longitude = address.geometry.location.lng();
   }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
+
+  
 
 }

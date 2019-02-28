@@ -35,8 +35,8 @@ import { AuthGaurdService } from './services/auth-gaurd.service';
 import { UnAuthGaurdService } from './services/unauth-gaurd.service';
 import { SubmitPropertyComponent } from './submit-property/submit-property.component';
 import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.component';
-
-
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
 
 export const AppRoutes: any = [
     { path: "", component: HomeComponent},
@@ -70,8 +70,10 @@ export const AppRoutes: any = [
     { path: "offer-type-rent", component: OfferTypeRentComponent },
     { path: "bank-detail", component: BankDetailComponent },
     { path: "property-search", component: PropertySearchComponent },
-    { path: "submit-property", component: SubmitPropertyComponent,canActivate : [AuthGaurdService]},
-    { path: "offer-type-sell", component: OfferTypeSellComponent}
+    { path: "submit-property", component: SubmitPropertyComponent, canActivate : [AuthGaurdService]},
+    { path: "offer-type-sell", component: OfferTypeSellComponent},
+    { path: "set-password", component: SetPasswordComponent},
+    { path: "forgot-password", component: ForgotPasswordComponent, canActivate : [UnAuthGaurdService]}
 ];
 
 export const AppComponents: any = [
@@ -105,5 +107,6 @@ export const AppComponents: any = [
     OfferTypeRentComponent,
     BankDetailComponent,
     SubmitPropertyComponent,
+    SetPasswordComponent,
     OfferTypeSellComponent
 ];

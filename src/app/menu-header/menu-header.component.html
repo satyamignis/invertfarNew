@@ -5,9 +5,6 @@
     <div *ngIf="apiLoading" class="loadingApi">
         <img src="./assets/images/icons/loading.gif">
     </div>
-    <!-- <div *ngIf="preloadimg" class="preloadingimg">
-        <img src="./assets/images/icons/preloader.gif">
-    </div> -->
     <!-- *********** Loading ************** -->
   
     <!-- Main Header-->
@@ -23,10 +20,14 @@
                         <div class="main-menu loginSuccessMenu">
                             <ul class="navigation clearfix">
                                   <li class="dropdown menudropdown"><a class="appt-btn theme-btn pd" >Directory</a>
-                                        <ul class="loginOpen">
+                                        <ul class="loginOpen" *ngIf="user">
                                             <li><a [routerLink]="['/add-service']" >Add Service</a></li>
                                             <li><a [routerLink]="['/my-offered-services']" >My Offered Services</a></li>
                                             <li><a [routerLink]="['/manage-services']">Manage Services</a></li>
+                                        </ul>
+                                        <ul class="loginOpen" *ngIf="!user">
+                                            <li><a [routerLink]="['/']" >Service Category</a></li>
+                                            <li><a [routerLink]="['/']" >My Booked Services</a></li>
                                         </ul>
                                     </li>
                             </ul>

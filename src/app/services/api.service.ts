@@ -8,7 +8,8 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class ApiService {
 
-  apiURL: string = 'http://dev-iis.com/projects/investfar/public/api/';
+  //apiURL: string = 'http://dev-iis.com/projects/investfar/public/api/';
+  apiURL: string = 'https://investfarapp.com/api/';
 
   constructor(private http: HttpClient) {
 
@@ -23,6 +24,11 @@ export class ApiService {
     apiGetData(apiSubUri){
         return this.http.get(this.apiURL+apiSubUri);
     }
+
+    getFileURL() {
+        return 'https://apps.tristatetechnology.com/investfar/public';
+    }
+
 
 }
 

@@ -150,10 +150,10 @@ export class AddServiceComponent implements OnInit {
           (response: any) => {
             console.log(response);
             if (response.errorCode == '0') {
-              this.toastr.success('Success',response.errorMsg);
+              this.toastr.success(response.errorMsg, 'Success');
               this.router.navigate(['/my-offered-services'])
             } else {
-              this.toastr.error('Try Again',response.errorMsg);
+              this.toastr.error(response.errorMsg, 'Try Again');
             }
               this.apiLoading=false;
           },

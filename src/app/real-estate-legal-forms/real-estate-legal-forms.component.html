@@ -25,104 +25,18 @@
 
                            <div class="legal_forms-option">
                                <div class="inner-option first">PURCHASE AND SALE AGREEMENT FORMS</div>
-                               <div class="inner-option">Standard Purchase And Sale Agreement
-                               <a href="https://investfarapp.com//re_legal_forms/Long-Form-Standard-Purchase-and-Sale-Agreement.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
+                               <div class="inner-option" *ngFor="let a of arrgementForms">{{a.form_name}}
+                               <a [href]="file_path+a.path" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
 
-                               <div class="inner-option">Standard Purchase And Sale Agreement Short Form
-                               <a href="https://investfarapp.com//re_legal_forms/SHORT-STANDARD-PURCHASE-AND-SALE-AGREEMENT.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Trust Agreement And Declaration Of Trust 
-                               <a href="https://investfarapp.com//re_legal_forms/Trust-Agreement-and-Declaration-of-trust.doc" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Holdover Occupancy Agreement
-                               <a href="https://investfarapp.com//re_legal_forms/HOLDOVER-OCCUPANCY-AGREEMENT.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Addendum To Purchase & Sale Agreement
-                               <a href="https://investfarapp.com//re_legal_forms/Addendum-To-Purchase-Sale-Agreement.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Sellers Property Disclosure Statement
-                               <a href="https://investfarapp.com//re_legal_forms/SELLERS-PROPERTY-DISCLOSURE-STATEMENT.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Authorization To Release Loan Information (1st Loan)
-                               <a href="https://investfarapp.com//re_legal_forms/Authorization-To-Release-Loan-Information.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Authorization To Release Loan Information (2nd Loan)
-                               <a href="https://investfarapp.com//re_legal_forms/Authorization-To-Release-2nd-Loan-Information.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Joint Venture Agreement
-                               <a href="https://investfarapp.com//re_legal_forms/JOINT-VENTURE-AGREEMENT.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
-
-                               <div class="inner-option">Cost Estimator
-                               <a href="https://investfarapp.com//re_legal_forms/Cost_Estimator_Form-1.pdf" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a></div>
                            </div>
 
                            <div class="legal_forms-option">
                                <div class="inner-option first">SUBJECT TO EXISTING LOAN</div>
 
-                               <div class="inner-option">Promissory Note
-                               <a href="https://investfarapp.com//re_legal_forms/PROMISSORY-NOTE.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+                               <div class="inner-option" *ngFor="let l of loanForms">{{l.form_name}}
+                               <a [href]="file_path+l.path" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
                                </div>
-
-                               <div class="inner-option">Warranty Deed
-                               <a href="https://investfarapp.com//re_legal_forms/WARRANTY-DEED.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Bill Of Sale
-                               <a href="https://investfarapp.com//re_legal_forms/BILL-OF-SALE.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Warranty Deed To Trustee
-                               <a href="https://investfarapp.com//re_legal_forms/WARRANTY-DEED-TO-TRUSTEE.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Quit-Claim Deed
-                               <a href="https://investfarapp.com//re_legal_forms/QUIT-CLAIM-DEED.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Limited Power Of Attorney
-                               <a href="https://investfarapp.com//re_legal_forms/LIMITED-POWER-OF-ATTORNEY.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Promissory Note (Balloon Note)
-                               <a href="https://investfarapp.com//re_legal_forms/Balloon-PROMISSORY-NOTE.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Seller Information Sheet
-                               <a href="https://investfarapp.com//re_legal_forms/Seller-Information-Sheet-1.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Assignment Of Beneficial Interest In Land Trust
-                               <a href="https://investfarapp.com//re_legal_forms/ASSIGNMENT-OF-BENEFICIAL-INTEREST.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Affidavit Of Deed & Completed Sale
-                               <a href="https://investfarapp.com//re_legal_forms/Affidavit-of-Deed-Completed-Sale.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Seller’s Affidavit (No Liens)
-                               <a href="https://investfarapp.com//re_legal_forms/Seller%E2%80%99s-Affidavit-No-Liens.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">“Due-On-Sale” Acknowledgement (No Promises)
-                               <a href="https://investfarapp.com//re_legal_forms/No-promises-%E2%80%9CDue-on-Sale%E2%80%9D-Acknowledgement.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">“Due-On-Sale” Acknowledgement
-                               <a href="https://investfarapp.com//re_legal_forms/Due-on-Sale-Acknowledgement.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Seller's Statement Of Understanding
-                               <a href="https://investfarapp.com//re_legal_forms/SELLERS-STATEMENT-OF-UNDERSTANDING.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Escrow Account Letter
-                               <a href="https://investfarapp.com//re_legal_forms/Escrow-Account-letter.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-
-                               <div class="inner-option">Fax Cover Page
-                              <a href="https://investfarapp.com//re_legal_forms/FAX-Page.docx" class="pull-right"><i class="fa fa-file-text" aria-hidden="true"></i></a>
-                               </div>
-                            </div>
+                           </div>
                     </div>
                 </div>
         </div>

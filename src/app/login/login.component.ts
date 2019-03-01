@@ -97,9 +97,9 @@ export class LoginComponent implements OnInit {
            /* ////////////////////////////////////////////////*/
 
            this.setCookieAndNavigate(response.data[0]);
-            this.toastr.success('Success',response.errorMsg);
+            this.toastr.success(response.errorMsg,'Success');
           } else {
-            this.toastr.error('Try Again',response.errorMsg);
+            this.toastr.error(response.errorMsg, 'Try Again');
           }
           this.apiLoading=false;
         },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-real-estate-legal-forms',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RealEstateLegalFormsComponent implements OnInit {
   preloadimg:any;
-
-  constructor() { }
+  arrgementForms : any = [];
+  loanForms : any = [];
+  file_path : any = '';
+  constructor(private apiService : ApiService) { }
 
   ngOnInit() {
   	 window.scrollTo(0, 0);
@@ -16,6 +19,26 @@ export class RealEstateLegalFormsComponent implements OnInit {
      setTimeout(() => {  
          this.preloadimg=false;
      }, 1000);
+     this.getRealEstate();
+  }
+
+getRealEstate(){
+    this.file_path = this.apiService.getFileURL();
+    this.apiService.apiGetData('get_re_legal_forms')
+    .subscribe(
+      (response : any) => {
+        if(response.errorCode == '0'){
+          console.log(response)
+          this.arrgementForms = response.data.purchaseForms
+          this.loanForms = response.data.subjectToExistingLoanForms
+        } else {
+          console.log('error')
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
   }
 
 }

@@ -1,6 +1,11 @@
-<div *ngIf="preloadimg" class="preloadingimg">
-    <img src="./assets/images/icons/preloader.gif">
-</div>
+<!-- *********** Loading ************** -->
+    <div *ngIf="preloadimg" class="preloadingimg">
+        <img src="./assets/images/icons/preloader.gif">
+    </div>
+    <div *ngIf="apiLoading" class="loadingApi">
+        <img src="./assets/images/icons/loading.gif">
+    </div>
+<!-- *********** Loading ************** -->
 <app-menu-header></app-menu-header>
 <section class="page-title" style="background-image:url(./assets/images/background/page-title-1.jpg);">
         <div class="auto-container">
@@ -25,75 +30,18 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td><a href="#"><img src="./assets/images/resource/properties01.jpg" alt="" width="75px" /></a></td>
-                <td>SOLD</td>
-                <td>Vacant</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            <tr class="mh-browse-estate__row" *ngIf="properties.length == 0">
+              <td colspan="6" class="mh-browse-estate__cell-1 no-data-avilable">
+                No Data
+              </td>
             </tr>
-             <tr>
-                <td>2</td>
-                <td><a href="#"><img src="./assets/images/resource/properties02.jpg" alt="" width="75px" /></a></td>
-                <td>SOLD</td>
-                <td>Rented</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-             <tr>
-                <td>3</td>
-                <td><a href="#"><img src="./assets/images/resource/properties03.jpg" alt="" width="75px" /></a></td>
-                <td>SOLD</td>
-                <td>Vacant</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-              <tr>
-                <td>4</td>
-                <td><a href="#"><img src="./assets/images/resource/properties01.jpg" alt="" width="75px" /></a></td>
-                <td>Notice of Default</td>
-                <td>Lived</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-             <tr>
-                <td>5</td>
-                <td><a href="#"><img src="./assets/images/resource/properties02.jpg" alt="" width="75px" /></a></td>
-                <td>Sold at auction</td>
-                <td>Vacant</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-             <tr>
-                <td>6</td>
-                <td><a href="#"><img src="./assets/images/resource/properties03.jpg" alt="" width="75px" /></a></td>
-                <td>Notice of Default</td>
-                <td>Lived</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><a href="#"><img src="./assets/images/resource/properties01.jpg" alt="" width="75px" /></a></td>
-                <td>Notice of Default</td>
-                <td>Lived</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-             <tr>
-                <td>8</td>
-                <td><a href="#"><img src="./assets/images/resource/properties02.jpg" alt="" width="75px" /></a></td>
-                <td>Sold at auction</td>
-                <td>Vacant</td>
-                <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-            </tr>
-             <tr>
-                <td>9</td>
-                <td><a href="#"><img src="./assets/images/resource/properties03.jpg" alt="" width="75px" /></a></td>
-                <td>Notice of Default</td>
-                <td>Lived</td>
+            <tr *ngFor="let p of properties; let i = index;">
+                <td>{{(i + 1)+((pageNo - 1) * limit)}}</td>
+                <td><a class="mh-browse-estate__image">
+                  <img src="{{p.propertyImg }}" (error)="setDefaultPic(p)" alt="p.title" class="Properties-img" width="120px">
+                </a></td>
+                <td>{{p.title}}</td>
+                <td>{{p.live}}</td>
                 <td><a href="#" class="table-icon edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                 <td><a href="#" class="table-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
             </tr>
@@ -101,7 +49,7 @@
         </div>
 
             <div class="text-center margin-top-50">
-               <ngb-pagination collectionSize="50" [(page)]="pageNo" [pageSize]="limit" [boundaryLinks]="true" (pageChange)="pageChange($event)"></ngb-pagination>
+                <ngb-pagination [collectionSize]="totalCount" [(page)]="pageNo" [pageSize]="limit" [boundaryLinks]="true" (pageChange)="pageChange($event)"></ngb-pagination>
             </div>
         </div>
         </section>

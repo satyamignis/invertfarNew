@@ -46,7 +46,7 @@ export class MenuHeaderComponent implements OnInit {
     this.apiLoading= true;
     this.myCookieService.deleteCookie('user');
     this.user = undefined;
-    this.toastr.success('Success','Successfully Logout.');
+    this.toastr.success('Successfully Logout.','Success');
     setInterval(() => { 
       this.apiLoading= false;
      }, 500);

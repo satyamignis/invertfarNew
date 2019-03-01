@@ -15,59 +15,53 @@
   
 <section  class="no_padding purchase-section" id="">
    <div  class="my-purchase-history">
-      <div  class="container">
-         <h3 >Current Plan</h3>
-         <!----><!---->
-         <div  class="current-plan-detail ng-star-inserted">
-            <div  class="col-sm-12">
-               <div  class="row"><label  class="heading">Current Plan</label><span  class="dot">:</span><span  class="planname">Investors Club</span></div>
-            </div>
-            <div  class="col-sm-12">
-               <div  class="row">
-                  <label  class="heading">Features</label><span  class="dot">:</span>
-                  <span  class="planname">
-                     <ul  class="listing">
-                        <!---->
-                        <li  class="ng-star-inserted">25 Valuation / Analytic reports</li>
-                        <li  class="ng-star-inserted">Real Estate legal forms</li>
-                        <li  class="ng-star-inserted">Investor Consultants</li>
-                        <li  class="ng-star-inserted">Directory Access</li>
-                        <li  class="ng-star-inserted">Exclusive Forum</li>
-                        <li  class="ng-star-inserted">InvestFar App</li>
-                        <li  class="ng-star-inserted">Market data</li>
-                        <li  class="ng-star-inserted">Free listing</li>
-                        <li  class="ng-star-inserted">Blog</li>
-                        <li  class="ng-star-inserted">Newsletter</li>
-                        <li  class="ng-star-inserted">Monthly market report alerts</li>
-                        <li  class="ng-star-inserted">Investment criteria property match alerts</li>
-                        <li  class="ng-star-inserted">Private money introductions or joint ventures</li>
-                        <li  class="ng-star-inserted">FREE or discounted real estate seminars and events</li>
-                     </ul>
-                  </span>
-               </div>
-            </div>
-            <div  class="col-sm-12">
-               <div  class="row"><label  class="heading">Valutions Count</label><span  class="dot">:</span><span  class="planname">25 Valuation</span></div>
-            </div>
-         </div>
-         <!---->
-         <div  class="purchase-history-list ng-star-inserted">
-            <h3 >Purchase History</h3>
-            <table >
-               <tbody >
-                  <tr >
-                     <th >Plan Name</th>
-                     <th >Price</th>
-                     <th >Date</th>
-                  </tr>
-                  <!----><!---->
-                  <tr  class="ng-star-inserted">
-                     <td  class="text-center" colspan="3"> No Purchased History</td>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-      </div>
+      <div class="container">
+          <h3>Current Plan</h3>
+          <div class="current-plan-detail" *ngIf="!purchaseDetails">
+            <p class="text-center errorMsg">{{errorMsg}}</p>
+          </div>
+          <div class="current-plan-detail" *ngIf="purchaseDetails">
+              <div class="col-sm-12">
+                <div class="row">
+                  <label class="heading">Current Plan</label><span class="dot">:</span><span class="planname">{{purchaseDetails.currnet_plan_name}}</span>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="row">
+                    <label class="heading">Features</label><span class="dot">:</span><span class="planname">
+                      <ul class="listing">
+                        <li *ngFor="let f of purchaseDetails.features">{{f}}</li> 
+                      </ul>
+                    </span>
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="row">
+                    <label class="heading">Valutions Count</label>
+                    <span class="dot">:</span><span class="planname">{{purchaseDetails.valuation_report_remain}} Valuation</span>
+                  </div>
+              </div>
+          </div>
+
+          <div class="purchase-history-list" *ngIf="purchaseDetails">
+            <h3>Purchase History</h3>
+            <table>
+                <tr>
+                  <th>Plan Name</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                </tr>
+                <tr *ngFor="let h of purchaseDetails.history_of_payment">
+                  <td>{{h.plan_name}}</td>
+                  <td>{{h.price}}</td>
+                  <td>{{h.purchased_on | date:'medium'}}</td>
+                </tr>
+                <tr *ngIf="purchaseDetails.history_of_payment.length == 0">
+                  <td class="text-center" colspan="3"> No Purchased History</td>
+                </tr>
+              </table>
+          </div>
+    </div>
    </div>
 </section>
 

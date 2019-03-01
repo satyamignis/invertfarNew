@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyPropertiesComponent implements OnInit {
   preloadimg:any;
+  totalCount = 0;
+  pagination = [];
+  pageNo = 1;
+  limit = 10;
   constructor() { }
 
   ngOnInit() {
@@ -15,5 +19,9 @@ export class MyPropertiesComponent implements OnInit {
        setTimeout(() => {  
            this.preloadimg=false;
        }, 1000);
+}
+
+pageChange($event){
+  
 }
 }

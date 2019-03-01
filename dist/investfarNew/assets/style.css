@@ -6788,6 +6788,24 @@ margin-top: 0%;
      padding-left: 8px;
      padding-right: 8px;
 }
+.multiselect-dropdown .dropdown-btn{
+  color: #808080;
+  padding: 8px 10px 0 17px !important;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  height: 44px;
+  border-radius: 0px !important;
+  background: #fff;
+}
+.multiselect-dropdown .dropdown-btn .dropdown-down,
+.multiselect-dropdown .dropdown-btn .dropdown-up{
+  border-top: 4px solid #050101 !important;
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+}
+.multiselect-dropdown .dropdown-btn .dropdown-up{
+     display: none !important;
+}
 
 /*** ==================================================================== 
      my favorites page

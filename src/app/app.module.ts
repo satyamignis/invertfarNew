@@ -11,7 +11,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
-
+import { NgxCurrencyModule } from 'ngx-currency';
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ngx-currency/src/currency-mask.config';
 
 
 /* %%%%%%%%%%%%%% Service %%%%%%%%%%%%%%%%%%*/
@@ -66,6 +67,16 @@ import { OfferTypeSellComponent } from './offer-type-sell/offer-type-sell.compon
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './set-password/set-password.component';
 
+export const CustomCurrencyMaskConfig: any = {
+  align: "left",
+  allowNegative: false,
+  allowZero: false,
+  decimal: ".",
+  precision: 2,
+  prefix: "$",
+  suffix: "",
+  thousands: ","
+};
 
 let config = new AuthServiceConfig([
   {
@@ -136,6 +147,7 @@ export function provideConfig() {
     SlideshowModule,
     GooglePlaceModule,
     NgbModule,
+    NgxCurrencyModule,
     SocialLoginModule,
     ToastrModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
@@ -154,6 +166,9 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    { provide: CURRENCY_MASK_CONFIG, 
+      useValue: CustomCurrencyMaskConfig 
     }
   ],
   bootstrap: [AppComponent]

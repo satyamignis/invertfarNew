@@ -28,7 +28,7 @@ export class PricingComponent implements OnInit {
   }
 
    getPricing(){
-   		//this.apiLoading=true;
+        this.apiLoading=true;
         this.api.apiGetData('get_in_app_purchase')
         .subscribe(
         (response : any) => {

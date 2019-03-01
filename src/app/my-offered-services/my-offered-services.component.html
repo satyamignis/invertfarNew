@@ -1,6 +1,11 @@
-<div *ngIf="preloadimg" class="preloadingimg">
-    <img src="./assets/images/icons/preloader.gif">
-</div>
+<!-- *********** Loading ************** -->
+    <div *ngIf="preloadimg" class="preloadingimg">
+        <img src="./assets/images/icons/preloader.gif">
+    </div>
+    <div *ngIf="apiLoading" class="loadingApi">
+        <img src="./assets/images/icons/loading.gif">
+    </div>
+<!-- *********** Loading ************** -->
 <app-menu-header></app-menu-header>
  <section class="page-title" style="background-image:url(./assets/images/background/page-title-1.jpg);">
         <div class="auto-container">
@@ -17,36 +22,33 @@
    <div _ class="book-services-category">
       <div _ class="container">
          <ul _ class="services-listing-wrap">
-            <!---->
-            <li _ class="ng-star-inserted">
-               <div _ class="service-listing">
-                  <div _ class="services-provider-icon"><img _ alt="img" title="img" src="https://investfar-prod-bucket.s3.us-east-2.amazonaws.com/subCategory/Kitchen_Remodel.png"></div>
-                  <div _ class="services-provider-shortdetail">
-                     <div _ class="detail">
-                        <div _ class="left mr-auto">
-                           <h3 _>General Contractor</h3>
-                           <span _ class="location-area"><i _ aria-hidden="true" class="fa fa-map-marker"></i> United States</span><!----><span _ class="Price">$65.00 / service</span><!----><span _ class="category-name">Category : General Contractor</span><span _ class="category-name">Sub Category :  Kitchen Remodel</span>
+                  <li *ngFor="let s of myOfferedServices">
+                  <div class="service-listing">
+                    <div class="services-provider-icon">
+                      <img src="{{s.subCategoryImage || filename}}" (error)="filename = './assets/images/icons/preloader.gif'" alt="img" title="img">
+                    </div>
+                    <div class="services-provider-shortdetail">
+                      <div class="detail">
+                        <div class="left mr-auto">
+                          <h3>{{s.name}}</h3>
+                          <span class="location-area">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                           {{s.address}}</span>
+                            <span class="Price" *ngIf="s.rate_type == 0">{{s.maxPrice | currency}} / service</span>
+                            <span class="Price" *ngIf="s.rate_type == 1">{{s.maxPrice | currency}} / hour</span>
+                            <span class="category-name">Category : {{s.categoryName}}</span>
+                            <span class="category-name">Sub Category : {{s.subCategoryName}}</span>
+
                         </div>
-                        <div _ class="right ml-auto"><a _ class="btn request-btn">Edit</a><a _ class="btn book-btn" data-target="#bookModal" data-toggle="modal">Delete</a></div>
-                     </div>
-                  </div>
-               </div>
-            </li>
-            <li _ class="ng-star-inserted">
-               <div _ class="service-listing">
-                  <div _ class="services-provider-icon"><img _ alt="img" title="img" src="https://investfar-prod-bucket.s3.us-east-2.amazonaws.com/subCategory/Custom-Home-Build.png"></div>
-                  <div _ class="services-provider-shortdetail">
-                     <div _ class="detail">
-                        <div _ class="left mr-auto">
-                           <h3 _>General Contractor</h3>
-                           <span _ class="location-area"><i _ aria-hidden="true" class="fa fa-map-marker"></i> United States</span><!----><span _ class="Price">$7,500.00 / service</span><!----><span _ class="category-name">Category : General Contractor</span><span _ class="category-name">Sub Category : Custom Home Build</span>
+                        <div class="right ml-auto">
+                          <a [routerLink]="['/directory/edit-service/'+s.id]" class="btn request-btn">Edit</a>
+                          <a class="btn book-btn" data-toggle="modal" data-target="#bookModal" (click)="deleteServiceConfirm(s.id, s.name)">Delete</a>
                         </div>
-                        <div _ class="right ml-auto"><a _ class="btn request-btn">Edit</a><a _ class="btn book-btn" data-target="#bookModal" data-toggle="modal">Delete</a></div>
-                     </div>
+                      </div>
+                    </div>
                   </div>
-               </div>
-            </li>
-         </ul>
+                </li> 
+          </ul>
       </div>
    </div>
 </section>
